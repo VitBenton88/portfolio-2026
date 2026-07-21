@@ -71,16 +71,29 @@ Concept: since the site has no projects showcase, it's structured as three chapt
 
 ## 6. Deployment
 
-- `vite.config.ts`: `base: '/<repo-name>/'`.
+- Repo name: `portfolio-2026`. Site URL will be `username.github.io/portfolio-2026`.
+- `vite.config.ts`: `base: '/portfolio-2026/'`.
 - `.github/workflows/deploy.yml`: builds on push to `main`, publishes `dist/` to the `gh-pages` branch.
 - Repo's GitHub Pages settings point at the `gh-pages` branch.
 
-## 7. Testing / Verification
+## 7. SEO / Social Metadata
+
+Since the site is meant to be shared (recruiters, LinkedIn, email signatures), `index.html` includes:
+- A real page `<title>` and meta description.
+- A favicon (matching the Indigo/chaptered-color identity).
+- Open Graph tags (`og:title`, `og:description`, `og:image`) so pasted links render a polished preview card. The `og:image` will be a simple static image using the site's palette/type, added under `public/`.
+
+## 8. Accessibility Baseline
+
+- Visible keyboard focus states on all interactive elements (nav links, buttons, `ChapterRail` segments).
+- `prefers-reduced-motion` respected — the Hero's staggered fade-in and scroll-triggered reveals are disabled/simplified for users who request reduced motion.
+
+## 9. Testing / Verification
 
 No formal automated test suite — this is a content-driven site with no complex logic. Instead:
 - TypeScript strict mode across content and components.
 - ESLint for code quality.
-- Manual verification in-browser before considering work done: responsive check (mobile/tablet/desktop), light/dark mode, nav scroll + active-section highlighting, `ChapterRail` behavior.
+- Manual verification in-browser before considering work done: responsive check (mobile/tablet/desktop), light/dark mode, nav scroll + active-section highlighting, `ChapterRail` behavior, keyboard-only navigation, reduced-motion behavior.
 
 ## Out of Scope (v1)
 
