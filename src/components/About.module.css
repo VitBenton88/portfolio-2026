@@ -1,0 +1,8 @@
+.section {
+  padding: 6rem 1.5rem;
+}
+
+.heading {
+  color: var(--color-about-amber);
+  margin-bottom: 2rem;
+}
