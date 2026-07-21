@@ -1,0 +1,38 @@
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-color: var(--color-hero-indigo);
+  padding: 0 1.5rem;
+}
+
+.out {
+  opacity: 0;
+  transform: translateY(16px);
+}
+
+.in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.name.in {
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.tagline.in {
+  transition: opacity 0.6s ease 0.15s, transform 0.6s ease 0.15s;
+}
+
+.name {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  color: var(--color-paper);
+  font-size: clamp(2.5rem, 8vw, 5rem);
+}
+
+.tagline {
+  color: var(--color-paper);
+  opacity: 0.85;
+}
