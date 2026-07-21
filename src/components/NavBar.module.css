@@ -26,3 +26,16 @@
   font-weight: 500;
   color: var(--color-hero-indigo);
 }
+
+/*
+ * The mobile nav Drawer is a Mantine overlay portaled outside <header>, so it
+ * isn't covered by .header's static paper background. Its "Menu" title has no
+ * explicit Mantine text color, so it inherits the global `body { color:
+ * var(--color-ink) } rule, which never changes with color scheme. Against
+ * Mantine's own dark drawer surface in dark mode, that leaves near-invisible
+ * dark-ink-on-dark-surface text. Force it to the paper color (light) in dark
+ * mode so it stays legible against the drawer's dark surface.
+ */
+:global([data-mantine-color-scheme='dark']) :global(.mantine-Drawer-title) {
+  color: var(--color-paper);
+}
