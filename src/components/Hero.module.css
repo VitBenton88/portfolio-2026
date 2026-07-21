@@ -22,10 +22,6 @@
   transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
-.tagline.in {
-  transition: opacity 0.6s ease 0.15s, transform 0.6s ease 0.15s;
-}
-
 .name {
   font-family: 'Bricolage Grotesque', sans-serif;
   color: var(--color-paper);
@@ -34,5 +30,13 @@
 
 .tagline {
   color: var(--color-paper);
+}
+
+.tagline.out {
+  opacity: 0;
+}
+
+.tagline.in {
   opacity: 0.85;
+  transition: opacity 0.6s ease 0.15s, transform 0.6s ease 0.15s;
 }
