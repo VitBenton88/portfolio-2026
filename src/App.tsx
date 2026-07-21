@@ -2,6 +2,7 @@ import { NavBar } from './components/NavBar';
 import { Hero } from './components/Hero';
 import { About } from './components/About';
 import { Resume } from './components/Resume';
+import { Contact } from './components/Contact';
 
 export function App() {
   return (
@@ -11,7 +12,7 @@ export function App() {
         <Hero />
         <About />
         <Resume />
-        <section id="contact" style={{ minHeight: '50vh' }} />
+        <Contact />
       </main>
     </>
   );

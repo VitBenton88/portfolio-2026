@@ -1,0 +1,8 @@
+.section {
+  padding: 6rem 1.5rem 8rem;
+}
+
+.heading {
+  color: var(--color-contact-magenta);
+  margin-bottom: 2rem;
+}
