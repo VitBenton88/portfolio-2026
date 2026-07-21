@@ -1,4 +1,5 @@
 import { NavBar } from './components/NavBar';
+import { ChapterRail } from './components/ChapterRail';
 import { Hero } from './components/Hero';
 import { About } from './components/About';
 import { Resume } from './components/Resume';
@@ -9,6 +10,7 @@ export function App() {
   return (
     <>
       <NavBar />
+      <ChapterRail />
       <main>
         <Hero />
         <About />
