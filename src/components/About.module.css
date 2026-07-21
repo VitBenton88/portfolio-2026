@@ -3,6 +3,9 @@
 }
 
 .heading {
-  color: var(--color-about-amber);
+  /* Darkened variant of --color-about-amber (#FFB238) for WCAG AA contrast
+   * against the paper background as heading text; the base amber token is
+   * unchanged and still used everywhere else (ChapterRail, badges, etc.). */
+  color: #995f00;
   margin-bottom: 2rem;
 }

@@ -3,6 +3,9 @@
 }
 
 .heading {
-  color: var(--color-contact-magenta);
+  /* Darkened variant of --color-contact-magenta (#F0529C) for WCAG AA contrast
+   * against the paper background as heading text; the base magenta token is
+   * unchanged and still used everywhere else (ChapterRail, badges, etc.). */
+  color: #b8226e;
   margin-bottom: 2rem;
 }

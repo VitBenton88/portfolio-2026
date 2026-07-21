@@ -3,7 +3,10 @@
 }
 
 .heading {
-  color: var(--color-resume-teal);
+  /* Darkened variant of --color-resume-teal (#12B886) for WCAG AA contrast
+   * against the paper background as heading text; the base teal token is
+   * unchanged and still used everywhere else (ChapterRail, badges, etc.). */
+  color: #0a7a56;
   margin-bottom: 2rem;
 }
 
