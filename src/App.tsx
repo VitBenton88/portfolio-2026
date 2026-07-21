@@ -3,6 +3,7 @@ import { Hero } from './components/Hero';
 import { About } from './components/About';
 import { Resume } from './components/Resume';
 import { Contact } from './components/Contact';
+import { Footer } from './components/Footer';
 
 export function App() {
   return (
@@ -14,6 +15,7 @@ export function App() {
         <Resume />
         <Contact />
       </main>
+      <Footer />
     </>
   );
 }
