@@ -1,0 +1,28 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 64px;
+  background-color: var(--color-paper);
+  border-bottom: 1px solid rgba(26, 27, 35, 0.08);
+  z-index: 100;
+}
+
+.brand {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-weight: 700;
+  color: var(--color-ink);
+}
+
+.link {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 500;
+  color: var(--color-ink);
+}
+
+.linkActive {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 500;
+  color: var(--color-hero-indigo);
+}
