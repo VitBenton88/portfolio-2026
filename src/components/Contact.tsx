@@ -26,7 +26,7 @@ export function Contact() {
                 target="_blank"
                 rel="noopener noreferrer"
                 leftSection={<Icon size={18} />}
-                color="pink"
+                color="var(--color-contact-magenta)"
                 variant="light"
                 size="lg"
               >

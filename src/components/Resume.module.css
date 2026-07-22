@@ -17,16 +17,3 @@
 .dates {
   font-family: 'IBM Plex Mono', monospace;
 }
-
-/*
- * The page background (--color-paper) is a static custom CSS variable that
- * does not change with color scheme, but Mantine's Timeline component sets
- * its item title/body text to a light gray in dark mode (assuming a dark
- * surface behind it). That leaves near-invisible light-gray-on-light-paper
- * text. Force it back to the ink color, which stays legible against the
- * paper background in both schemes.
- */
-:global([data-mantine-color-scheme='dark']) .section :global(.mantine-Timeline-itemTitle),
-:global([data-mantine-color-scheme='dark']) .section :global(.mantine-Timeline-itemBody) {
-  color: var(--color-ink);
-}

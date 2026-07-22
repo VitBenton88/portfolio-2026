@@ -13,7 +13,7 @@ Object.entries(palette).forEach(([property, value]) => {
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <MantineProvider theme={theme} defaultColorScheme="auto">
+    <MantineProvider theme={theme} defaultColorScheme="light" forceColorScheme="light">
       <App />
     </MantineProvider>
   </StrictMode>,
