@@ -9,6 +9,8 @@ export const theme = createTheme({
     paper: palette['--color-paper'],
     ink: palette['--color-ink'],
     heroIndigo: palette['--color-hero-indigo'],
+    heroIndigoBright: palette['--color-hero-indigo-bright'],
+    heroIndigoDeep: palette['--color-hero-indigo-deep'],
     aboutAmber: palette['--color-about-amber'],
     resumeTeal: palette['--color-resume-teal'],
     contactMagenta: palette['--color-contact-magenta'],

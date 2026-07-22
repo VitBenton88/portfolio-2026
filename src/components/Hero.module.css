@@ -4,8 +4,23 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-  background-color: var(--color-hero-indigo);
   padding: 0 1.5rem;
+  background:
+    radial-gradient(circle at 20% 20%, var(--color-hero-indigo-bright) 0%, transparent 55%),
+    radial-gradient(circle at 80% 30%, var(--color-hero-indigo-deep) 0%, transparent 55%),
+    radial-gradient(circle at 50% 85%, var(--color-hero-indigo-bright) 0%, transparent 55%),
+    var(--color-hero-indigo);
+  background-size: 180% 180%;
+  animation: heroMeshShift 18s ease-in-out infinite alternate;
+}
+
+@keyframes heroMeshShift {
+  0% {
+    background-position: 0% 0%, 100% 0%, 50% 100%, 0 0;
+  }
+  100% {
+    background-position: 20% 30%, 70% 40%, 30% 70%, 0 0;
+  }
 }
 
 .out {
