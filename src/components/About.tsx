@@ -1,5 +1,6 @@
-import { Container, Grid, Image, Stack, Text, Title } from '@mantine/core';
+import { Container, Grid, Stack, Text, Title } from '@mantine/core';
 import { content } from '../content';
+import { Picture } from './Picture';
 import classes from './About.module.css';
 
 export function About() {
@@ -11,7 +12,7 @@ export function About() {
         </Title>
         <Grid gap="xl" align="center">
           <Grid.Col span={{ base: 12, sm: 4 }}>
-            <Image src={content.photoUrl} alt={`Photo of ${content.name}`} radius="md" />
+            <Picture img={{ ...content.photo, alt: `Photo of ${content.name}` }} className={classes.photo} />
           </Grid.Col>
           <Grid.Col span={{ base: 12, sm: 8 }}>
             <Stack gap="sm">

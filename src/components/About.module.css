@@ -9,3 +9,14 @@
   color: #995f00;
   margin-bottom: 2rem;
 }
+
+.photo {
+  display: block;
+}
+
+.photo img {
+  width: 100%;
+  height: auto;
+  border-radius: var(--mantine-radius-md);
+  object-fit: cover;
+}
