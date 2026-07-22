@@ -50,8 +50,8 @@ export const content: SiteContent = {
     },
   ],
   socialLinks: [
-    { label: 'LinkedIn', url: 'https://linkedin.com/in/yourprofile' },
-    { label: 'GitHub', url: 'https://github.com/yourusername' },
+    { label: 'LinkedIn', url: 'https://www.linkedin.com/in/vit-benton/' },
+    { label: 'GitHub', url: 'https://github.com/VitBenton88' },
   ],
   resumeUrl: `${BASE}resume.pdf`,
 };
