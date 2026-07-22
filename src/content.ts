@@ -35,14 +35,11 @@ export const content: SiteContent = {
     "Whether I'm leading front-end architecture, hardening UI flows with integration and unit tests, or driving accessibility (WCAG) refactors, I bring a product-focused mindset, a love for clean code, and a real commitment to cross-functional collaboration. I'm also leaning into AI-assisted development to prototype and move faster without cutting corners.",
     "I'm currently open to new front-end or full-stack roles (React/TypeScript), remote-friendly — if you're working on something ambitious and want a reliable, quality-minded engineer, let's connect.",
   ],
-  // Placeholder filenames/widths — swap in the real multi-resolution files under
-  // `public/` and adjust these to match once they're supplied. `sizes` matches
-  // the layout: photo is full-width below the `sm` breakpoint (~48em, where
-  // About's Grid stacks to one column) and ~1/3 width above it.
   photo: {
-    src: `${BASE}profile.jpg`,
-    srcset: `${BASE}profile-480.jpg 480w, ${BASE}profile-800.jpg 800w, ${BASE}profile-1200.jpg 1200w`,
-    sizes: '(min-width: 48em) 33vw, 100vw',
+    src: `${BASE}headshot-1x.jpg`,
+    srcset: `${BASE}headshot-1x.jpg 1x, ${BASE}headshot-2x.jpg 2x, ${BASE}headshot-3x.jpg 3x, ${BASE}headshot-4x.jpg 4x`,
+    width: '350',
+    height: '341',
     loadingStrategy: 'lazy',
   },
   skills: [
