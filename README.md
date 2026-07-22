@@ -1,32 +1,21 @@
-# React + TypeScript + Vite
+# Portfolio 2026
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Personal portfolio site built with Vite, React, TypeScript, and Mantine.
 
-Currently, two official plugins are available:
+## Local development
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+npm install
+npm run dev
 
-## React Compiler
+## Build
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+npm run build
+npm run preview
 
-## Expanding the Oxlint configuration
+## Deployment
 
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
+Pushing to `main` triggers `.github/workflows/deploy.yml`, which builds the site
+and publishes `dist/` to the `gh-pages` branch. In the GitHub repo settings under
+Pages, set the source to the `gh-pages` branch (root).
 
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
-```
-
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+Live URL: https://<your-github-username>.github.io/portfolio-2026/
