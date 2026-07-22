@@ -9,6 +9,10 @@
   --color-contact-magenta: #F0529C;
 }
 
+section {
+  scroll-margin-top: 64px;
+}
+
 * {
   box-sizing: border-box;
 }
