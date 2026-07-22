@@ -1,4 +1,4 @@
-import { Container, Grid, Image, Text, Title } from '@mantine/core';
+import { Container, Grid, Image, Stack, Text, Title } from '@mantine/core';
 import { content } from '../content';
 import classes from './About.module.css';
 
@@ -14,7 +14,13 @@ export function About() {
             <Image src={content.photoUrl} alt={`Photo of ${content.name}`} radius="md" />
           </Grid.Col>
           <Grid.Col span={{ base: 12, sm: 8 }}>
-            <Text size="lg">{content.bio}</Text>
+            <Stack gap="sm">
+              {content.bio.map((paragraph) => (
+                <Text key={paragraph} size="lg">
+                  {paragraph}
+                </Text>
+              ))}
+            </Stack>
           </Grid.Col>
         </Grid>
       </Container>

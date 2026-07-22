@@ -14,7 +14,7 @@ export interface SocialLink {
 export interface SiteContent {
   name: string;
   tagline: string;
-  bio: string;
+  bio: string[];
   photoUrl: string;
   skills: string[];
   experience: ExperienceEntry[];
@@ -27,25 +27,41 @@ const BASE = import.meta.env.BASE_URL;
 export const content: SiteContent = {
   name: 'Vit Benton',
   tagline: 'Full-stack web developer specializing in React & TypeScript — 14+ years building for the web.',
-  bio: 'Full-stack web developer with 14+ years building for the web, specializing in front-end engineering with React and TypeScript. Experienced across SaaS, GovTech, e-commerce, and startups — comfortable owning features end-to-end, from UX and architecture through testing and delivery. Thrives both independently and on cross-functional teams while consistently meeting deadlines.',
+  bio: [
+    "I'm a full-stack web developer based in South Florida who loves building robust, user-centered web applications. Over 14+ years, I've shipped everything from sleek marketing sites and e-commerce platforms to complex, data-driven SaaS and GovTech applications used by local governments across the U.S.",
+    'My core is front-end engineering with React and TypeScript. Most recently I owned the front end for heavy, multi-step submission forms — dynamic per-jurisdiction validation, file uploads, and dashboards on both the user and processor sides — built with React Hook Form, Zod, Ant Design, and GraphQL. I also bring a solid backend foundation in Node.js, PHP, MySQL, and MongoDB, plus deep CMS experience with WordPress, Drupal, and Magento, and cloud deployment on AWS.',
+    "Whether I'm leading front-end architecture, hardening UI flows with integration and unit tests, or driving accessibility (WCAG) refactors, I bring a product-focused mindset, a love for clean code, and a real commitment to cross-functional collaboration. I'm also leaning into AI-assisted development to prototype and move faster without cutting corners.",
+    "I'm currently open to new front-end or full-stack roles (React/TypeScript), remote-friendly — if you're working on something ambitious and want a reliable, quality-minded engineer, let's connect.",
+  ],
   photoUrl: `${BASE}profile.jpg`,
   skills: [
     'TypeScript',
     'JavaScript (ES6+)',
+    'HTML5',
+    'CSS3',
     'React.js',
     'React Native',
     'Vue.js',
+    'React Hook Form',
+    'Zod',
+    'Ant Design',
+    'Tailwind CSS',
     'Node.js',
+    'PHP',
     'GraphQL',
     'REST APIs',
-    'Tailwind CSS',
-    'Ant Design',
+    'MySQL',
+    'MongoDB',
+    'AWS',
+    'Git',
+    'CI/CD',
     'Jest',
     'Cypress',
-    'AWS',
-    'CI/CD',
     'Figma',
     'Agile (Scrum/Kanban)',
+    'Accessibility (WCAG)',
+    'Web Performance',
+    'AI-Assisted Development',
   ],
   experience: [
     {
