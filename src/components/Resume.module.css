@@ -17,3 +17,7 @@
 .dates {
   font-family: 'IBM Plex Mono', monospace;
 }
+
+.bullets {
+  padding-left: 1rem;
+}

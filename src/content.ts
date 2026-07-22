@@ -41,6 +41,7 @@ export const content: SiteContent = {
     width: '350',
     height: '341',
     loadingStrategy: 'lazy',
+    sizes: '(max-width: 47.9375em) 100vw, 350px',
   },
   skills: [
     'TypeScript',
