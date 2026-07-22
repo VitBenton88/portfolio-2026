@@ -34,7 +34,7 @@ export function ChapterRail() {
           }}
           onClick={() => scrollTo(chapter.id)}
           aria-label={`Jump to ${chapter.label}`}
-          aria-current={chapter.id === active}
+          aria-current={chapter.id === active ? 'step' : undefined}
         />
       ))}
     </nav>

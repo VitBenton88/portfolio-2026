@@ -27,15 +27,15 @@ export function NavBar() {
   return (
     <header className={classes.header}>
       <Group justify="space-between" h="100%" px="md">
-        <Anchor component="button" onClick={() => scrollTo('hero')} className={classes.brand} underline="never">
+        <Anchor href="#hero" onClick={(e) => { e.preventDefault(); scrollTo('hero'); }} className={classes.brand} underline="never">
           {content.name}
         </Anchor>
         <Group gap="lg" visibleFrom="sm">
           {LINKS.map((link) => (
             <Anchor
               key={link.id}
-              component="button"
-              onClick={() => scrollTo(link.id)}
+              href={`#${link.id}`}
+              onClick={(e) => { e.preventDefault(); scrollTo(link.id); }}
               underline="never"
               className={active === link.id ? classes.linkActive : classes.link}
             >
@@ -48,7 +48,7 @@ export function NavBar() {
       <Drawer opened={opened} onClose={close} hiddenFrom="sm" padding="md" size="xs" title="Menu">
         <Stack>
           {LINKS.map((link) => (
-            <Anchor key={link.id} component="button" onClick={() => scrollTo(link.id)} underline="never">
+            <Anchor key={link.id} href={`#${link.id}`} onClick={(e) => { e.preventDefault(); scrollTo(link.id); }} underline="never">
               {link.label}
             </Anchor>
           ))}

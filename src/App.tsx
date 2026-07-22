@@ -9,9 +9,10 @@ import { Footer } from './components/Footer';
 export function App() {
   return (
     <>
+      <a href="#main-content" className="skip-link">Skip to main content</a>
       <NavBar />
       <ChapterRail />
-      <main>
+      <main id="main-content">
         <Hero />
         <About />
         <Resume />
