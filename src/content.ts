@@ -15,7 +15,7 @@ export interface SocialLink {
 
 export interface SkillGroup {
   category: string;
-  items: string[];
+  items: { name: string; color: string }[];
 }
 
 export interface SiteContent {
@@ -51,23 +51,55 @@ export const content: SiteContent = {
   skills: [
     {
       category: 'Core',
-      items: ['TypeScript', 'JavaScript (ES6+)', 'HTML5', 'CSS3'],
+      items: [
+        { name: 'TypeScript', color: '#3178C6' },
+        { name: 'JavaScript (ES6+)', color: '#F7DF1E' },
+        { name: 'HTML5', color: '#E34F26' },
+        { name: 'CSS3', color: '#1572B6' },
+      ],
     },
     {
       category: 'Frontend',
-      items: ['React.js', 'React Native', 'Vue.js', 'React Hook Form', 'Zod', 'Ant Design', 'Tailwind CSS'],
+      items: [
+        { name: 'React.js', color: '#61DAFB' },
+        { name: 'React Native', color: '#61DAFB' },
+        { name: 'Vue.js', color: '#4FC08D' },
+        { name: 'React Hook Form', color: '#EC5990' },
+        { name: 'Zod', color: '#3068B7' },
+        { name: 'Ant Design', color: '#0170FE' },
+        { name: 'Tailwind CSS', color: '#06B6D4' },
+      ],
     },
     {
       category: 'Backend',
-      items: ['Node.js', 'PHP', 'GraphQL', 'REST APIs', 'MySQL', 'MongoDB', 'AWS'],
+      items: [
+        { name: 'Node.js', color: '#339933' },
+        { name: 'PHP', color: '#777BB4' },
+        { name: 'GraphQL', color: '#E10098' },
+        { name: 'REST APIs', color: '#5B3DF5' },
+        { name: 'MySQL', color: '#4479A1' },
+        { name: 'MongoDB', color: '#47A248' },
+        { name: 'AWS', color: '#FF9900' },
+      ],
     },
     {
       category: 'Testing & Tools',
-      items: ['Git', 'CI/CD', 'Jest', 'Cypress'],
+      items: [
+        { name: 'Git', color: '#F05032' },
+        { name: 'CI/CD', color: '#5B3DF5' },
+        { name: 'Jest', color: '#C21325' },
+        { name: 'Cypress', color: '#69D3A7' },
+      ],
     },
     {
       category: 'Craft & Process',
-      items: ['Figma', 'Agile (Scrum/Kanban)', 'Accessibility (WCAG)', 'Web Performance', 'AI-Assisted Development'],
+      items: [
+        { name: 'Figma', color: '#F24E1E' },
+        { name: 'Agile (Scrum/Kanban)', color: '#5B3DF5' },
+        { name: 'Accessibility (WCAG)', color: '#5B3DF5' },
+        { name: 'Web Performance', color: '#5B3DF5' },
+        { name: 'AI-Assisted Development', color: '#5B3DF5' },
+      ],
     },
   ],
   experience: [

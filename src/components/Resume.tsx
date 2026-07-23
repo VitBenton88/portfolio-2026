@@ -19,8 +19,8 @@ export function Resume() {
               </Text>
               <Group gap="xs">
                 {group.items.map((skill) => (
-                  <Badge key={skill} variant="light" color="teal" className={classes.badge}>
-                    {skill}
+                  <Badge key={skill.name} variant="filled" color={skill.color} autoContrast className={classes.badge}>
+                    {skill.name}
                   </Badge>
                 ))}
               </Group>
