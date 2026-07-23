@@ -11,8 +11,21 @@
   font-size: 2rem;
 }
 
+.heading::after {
+  content: '';
+  display: block;
+  width: 3rem;
+  height: 4px;
+  margin-top: 0.5rem;
+  background-color: var(--color-about-amber);
+  border-radius: 2px;
+}
+
 .photo {
   display: block;
+  border: 3px solid var(--color-about-amber);
+  border-radius: var(--mantine-radius-md);
+  box-shadow: 0 0 0 6px rgba(255, 178, 56, 0.25);
 }
 
 .photo img {

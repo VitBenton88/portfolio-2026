@@ -1,6 +1,6 @@
-import { Badge, Button, Container, Group, List, Stack, Text, Timeline, Title } from '@mantine/core';
-import { IconDownload } from '@tabler/icons-react';
+import { Badge, Container, Group, List, Stack, Text, Timeline, Title } from '@mantine/core';
 import { content } from '../content';
+import { ResumeDownloadButton } from './ResumeDownloadButton';
 import classes from './Resume.module.css';
 
 export function Resume() {
@@ -43,16 +43,7 @@ export function Resume() {
           ))}
         </Timeline>
 
-        <Button
-          component="a"
-          href={content.resumeUrl}
-          download
-          leftSection={<IconDownload size={16} />}
-          color="teal"
-          mt="xl"
-        >
-          Download Resume
-        </Button>
+        <ResumeDownloadButton color="teal" mt="xl" />
       </Container>
     </section>
   );

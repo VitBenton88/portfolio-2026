@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
-import { Button, Stack, Title, Text } from '@mantine/core';
-import { IconDownload } from '@tabler/icons-react';
+import { Stack, Title, Text } from '@mantine/core';
 import { content } from '../content';
+import { ResumeDownloadButton } from './ResumeDownloadButton';
 import classes from './Hero.module.css';
 
 export function Hero() {
@@ -21,17 +21,10 @@ export function Hero() {
         <Text size="xl" className={`${classes.tagline} ${loaded ? classes.in : classes.out}`}>
           {content.tagline}
         </Text>
-        <Button
-          component="a"
-          href={content.resumeUrl}
-          download="Vit-Benton-Resume.pdf"
-          leftSection={<IconDownload size={18} />}
+        <ResumeDownloadButton
           variant="white"
-          size="md"
           className={`${classes.cta} ${loaded ? classes.in : classes.out}`}
-        >
-          Download Resume
-        </Button>
+        />
       </Stack>
     </section>
   );

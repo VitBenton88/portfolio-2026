@@ -30,7 +30,7 @@ export function NavBar() {
         <Anchor href="#hero" onClick={(e) => { e.preventDefault(); scrollTo('hero'); }} className={classes.brand} underline="never">
           {content.name}
         </Anchor>
-        <Group gap="lg" visibleFrom="sm">
+        <Group component="nav" aria-label="Primary" gap="lg" visibleFrom="sm">
           {LINKS.map((link) => (
             <Anchor
               key={link.id}
@@ -38,17 +38,31 @@ export function NavBar() {
               onClick={(e) => { e.preventDefault(); scrollTo(link.id); }}
               underline="never"
               className={active === link.id ? classes.linkActive : classes.link}
+              aria-current={active === link.id ? 'page' : undefined}
             >
               {link.label}
             </Anchor>
           ))}
         </Group>
-        <Burger opened={opened} onClick={toggle} hiddenFrom="sm" aria-label="Toggle navigation" />
+        <Burger
+          opened={opened}
+          onClick={toggle}
+          hiddenFrom="sm"
+          aria-label="Toggle navigation"
+          aria-expanded={opened}
+          aria-controls="mobile-nav"
+        />
       </Group>
       <Drawer opened={opened} onClose={close} hiddenFrom="sm" padding="md" size="xs" title="Menu">
-        <Stack>
+        <Stack id="mobile-nav" component="nav" aria-label="Primary">
           {LINKS.map((link) => (
-            <Anchor key={link.id} href={`#${link.id}`} onClick={(e) => { e.preventDefault(); scrollTo(link.id); }} underline="never">
+            <Anchor
+              key={link.id}
+              href={`#${link.id}`}
+              onClick={(e) => { e.preventDefault(); scrollTo(link.id); }}
+              underline="never"
+              aria-current={active === link.id ? 'page' : undefined}
+            >
               {link.label}
             </Anchor>
           ))}
