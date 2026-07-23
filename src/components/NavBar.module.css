@@ -23,6 +23,8 @@
 
 .linkActive {
   font-family: 'IBM Plex Sans', sans-serif;
-  font-weight: 500;
+  font-weight: 600;
   color: var(--color-hero-indigo);
+  border-bottom: 2px solid var(--color-hero-indigo);
+  padding-bottom: 2px;
 }

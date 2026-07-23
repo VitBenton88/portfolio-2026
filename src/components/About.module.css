@@ -8,6 +8,7 @@
    * unchanged and still used everywhere else (ChapterRail, badges, etc.). */
   color: #995f00;
   margin-bottom: 2rem;
+  font-size: 2rem;
 }
 
 .photo {

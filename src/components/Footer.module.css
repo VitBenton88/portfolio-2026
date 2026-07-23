@@ -8,4 +8,9 @@
 .iconLink {
   color: var(--color-ink);
   display: inline-flex;
+  transition: color 0.2s ease;
+}
+
+.iconLink:hover {
+  color: var(--color-hero-indigo);
 }

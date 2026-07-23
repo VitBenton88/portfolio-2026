@@ -28,7 +28,7 @@ export function About() {
             />
           </Grid.Col>
           <Grid.Col span={{ base: 12, sm: 8 }}>
-            <Stack gap="sm">
+            <Stack gap="md" maw="65ch">
               {content.bio.map((paragraph) => (
                 <Text key={paragraph} size="lg">
                   {paragraph}
