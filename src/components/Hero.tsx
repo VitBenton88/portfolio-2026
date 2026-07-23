@@ -25,7 +25,7 @@ export function Hero() {
           component="a"
           href={content.resumeUrl}
           download
-          leftSection={<IconDownload size={16} />}
+          leftSection={<IconDownload size={18} />}
           variant="white"
           size="md"
           className={`${classes.cta} ${loaded ? classes.in : classes.out}`}
