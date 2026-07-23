@@ -28,17 +28,6 @@ export function Resume() {
           ))}
         </Stack>
 
-        <Button
-          component="a"
-          href={content.resumeUrl}
-          download
-          leftSection={<IconDownload size={16} />}
-          color="teal"
-          mb="xl"
-        >
-          Download Resume
-        </Button>
-
         <Timeline active={content.experience.length} bulletSize={16} lineWidth={2} color="teal">
           {content.experience.map((entry) => (
             <Timeline.Item key={`${entry.company}-${entry.startDate}`} title={entry.title}>
@@ -53,6 +42,17 @@ export function Resume() {
             </Timeline.Item>
           ))}
         </Timeline>
+
+        <Button
+          component="a"
+          href={content.resumeUrl}
+          download
+          leftSection={<IconDownload size={16} />}
+          color="teal"
+          mt="xl"
+        >
+          Download Resume
+        </Button>
       </Container>
     </section>
   );
