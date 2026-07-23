@@ -13,12 +13,17 @@ export interface SocialLink {
   url: string;
 }
 
+export interface SkillGroup {
+  category: string;
+  items: string[];
+}
+
 export interface SiteContent {
   name: string;
   tagline: string;
   bio: string[];
   photo: ImageData;
-  skills: string[];
+  skills: SkillGroup[];
   experience: ExperienceEntry[];
   socialLinks: SocialLink[];
   resumeUrl: string;
@@ -44,33 +49,26 @@ export const content: SiteContent = {
     sizes: '(max-width: 47.9375em) 100vw, 350px',
   },
   skills: [
-    'TypeScript',
-    'JavaScript (ES6+)',
-    'HTML5',
-    'CSS3',
-    'React.js',
-    'React Native',
-    'Vue.js',
-    'React Hook Form',
-    'Zod',
-    'Ant Design',
-    'Tailwind CSS',
-    'Node.js',
-    'PHP',
-    'GraphQL',
-    'REST APIs',
-    'MySQL',
-    'MongoDB',
-    'AWS',
-    'Git',
-    'CI/CD',
-    'Jest',
-    'Cypress',
-    'Figma',
-    'Agile (Scrum/Kanban)',
-    'Accessibility (WCAG)',
-    'Web Performance',
-    'AI-Assisted Development',
+    {
+      category: 'Core',
+      items: ['TypeScript', 'JavaScript (ES6+)', 'HTML5', 'CSS3'],
+    },
+    {
+      category: 'Frontend',
+      items: ['React.js', 'React Native', 'Vue.js', 'React Hook Form', 'Zod', 'Ant Design', 'Tailwind CSS'],
+    },
+    {
+      category: 'Backend',
+      items: ['Node.js', 'PHP', 'GraphQL', 'REST APIs', 'MySQL', 'MongoDB', 'AWS'],
+    },
+    {
+      category: 'Testing & Tools',
+      items: ['Git', 'CI/CD', 'Jest', 'Cypress'],
+    },
+    {
+      category: 'Craft & Process',
+      items: ['Figma', 'Agile (Scrum/Kanban)', 'Accessibility (WCAG)', 'Web Performance', 'AI-Assisted Development'],
+    },
   ],
   experience: [
     {

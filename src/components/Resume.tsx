@@ -1,4 +1,4 @@
-import { Badge, Button, Container, Group, List, Text, Timeline, Title } from '@mantine/core';
+import { Badge, Button, Container, Group, List, Stack, Text, Timeline, Title } from '@mantine/core';
 import { IconDownload } from '@tabler/icons-react';
 import { content } from '../content';
 import classes from './Resume.module.css';
@@ -11,13 +11,22 @@ export function Resume() {
           Resume
         </Title>
 
-        <Group gap="xs" mb="xl">
-          {content.skills.map((skill) => (
-            <Badge key={skill} variant="light" color="teal" className={classes.badge}>
-              {skill}
-            </Badge>
+        <Stack gap="xs" mb="xl">
+          {content.skills.map((group) => (
+            <div key={group.category}>
+              <Text size="xs" fw={600} tt="uppercase" c="dimmed" mb={6} className={classes.skillCategory}>
+                {group.category}
+              </Text>
+              <Group gap="xs">
+                {group.items.map((skill) => (
+                  <Badge key={skill} variant="light" color="teal" className={classes.badge}>
+                    {skill}
+                  </Badge>
+                ))}
+              </Group>
+            </div>
           ))}
-        </Group>
+        </Stack>
 
         <Button
           component="a"
