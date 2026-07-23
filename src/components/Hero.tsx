@@ -24,7 +24,7 @@ export function Hero() {
         <Button
           component="a"
           href={content.resumeUrl}
-          download
+          download="Vit-Benton-Resume.pdf"
           leftSection={<IconDownload size={18} />}
           variant="white"
           size="md"
