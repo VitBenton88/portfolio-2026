@@ -1,86 +1,49 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import type { SectionId } from '../types';
+
+// Distance (px) from the top of the viewport that counts as "reached" a
+// section. Roughly the sticky nav's height plus a little breathing room.
+const ACTIVATION_LINE = 96;
 
 export function useActiveSection(sectionIds: readonly SectionId[]): SectionId {
   const [active, setActive] = useState<SectionId>(sectionIds[0]);
-  const ratios = useRef(new Map<SectionId, number>());
-  // Tracks whether the document is currently scrolled to (or within a
-  // couple pixels of) the bottom. Read by both the scroll handler and the
-  // IntersectionObserver callback below so neither one can fight the
-  // other's decision about whether the last section should be forced
-  // active - see the comment near its declaration for why this is needed.
-  const atBottomRef = useRef(false);
   const key = sectionIds.join(',');
 
   useEffect(() => {
-    // Reset persisted ratios whenever the observed section set changes
-    // (key changes) so stale entries from a previous section list can't
-    // skew the "most visible" computation below.
-    ratios.current.clear();
-    atBottomRef.current = false;
-
     const lastId = sectionIds[sectionIds.length - 1];
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          ratios.current.set(
-            entry.target.id as SectionId,
-            entry.isIntersecting ? entry.intersectionRatio : 0,
-          );
-        });
-
-        let topId: SectionId | null = null;
-        let topRatio = 0;
-        ratios.current.forEach((ratio, id) => {
-          if (ratio > topRatio) {
-            topRatio = ratio;
-            topId = id;
-          }
-        });
-
-        // Bottom-of-page fallback: the observer's shrunk root
-        // (rootMargin: '-40%' at the bottom) means a short last section
-        // can never accumulate enough intersection ratio to cross even
-        // the lowest threshold once there's no more room to scroll it
-        // further into view. Meanwhile the *previous* section's ratio in
-        // the map can go stale at a nonzero value (it only updates when
-        // its ratio crosses a threshold boundary), so it would otherwise
-        // keep "winning" this comparison forever. When we know from the
-        // scroll handler that the page is at the bottom, force the last
-        // id to win regardless of what the ratio map says.
-        if (atBottomRef.current) {
-          topId = lastId;
-        }
-
-        if (topId) {
-          setActive(topId);
-        }
-      },
-      { threshold: [0.3, 0.5, 0.7], rootMargin: '-64px 0px -40% 0px' },
-    );
-
-    sectionIds.forEach((id) => {
-      const el = document.getElementById(id);
-      if (el) observer.observe(el);
-    });
-
-    const handleScroll = () => {
+    // Position-based scrollspy: the active section is the last one (in DOM
+    // order) whose top has scrolled above the activation line. Unlike an
+    // IntersectionObserver ratio comparison, this is agnostic to how tall
+    // any given section is - a section several viewports tall activates
+    // exactly the same way a short one does, because we only ever look at
+    // where its *top* edge is, never how much of it is currently visible.
+    const computeActive = (): SectionId => {
       const atBottom =
         window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2;
-      atBottomRef.current = atBottom;
-      if (atBottom) {
-        setActive(lastId);
+      if (atBottom) return lastId;
+
+      let current = sectionIds[0];
+      for (const id of sectionIds) {
+        const el = document.getElementById(id);
+        if (el && el.getBoundingClientRect().top <= ACTIVATION_LINE) {
+          current = id;
+        }
       }
+      return current;
     };
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    // Run once on mount in case the page loads already scrolled to the
-    // bottom (e.g. a hash-link reload landing on the last section).
+
+    const handleScroll = () => setActive(computeActive());
+
+    // Run once on mount in case the page loads already scrolled (e.g. a
+    // hash-link reload landing mid-page or at the bottom).
     handleScroll();
 
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener('resize', handleScroll);
     return () => {
-      observer.disconnect();
       window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleScroll);
     };
     // sectionIds is intentionally excluded: `key` is its stable string
     // representation, used so the effect doesn't re-run on every render
