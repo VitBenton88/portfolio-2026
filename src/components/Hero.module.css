@@ -1,26 +1,62 @@
 .hero {
+  position: relative;
+  overflow: hidden;
   min-height: 100svh;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
   padding: 0 1.5rem;
-  background:
-    radial-gradient(circle at 20% 20%, var(--color-hero-indigo-bright) 0%, transparent 55%),
-    radial-gradient(circle at 80% 30%, var(--color-hero-indigo-deep) 0%, transparent 55%),
-    radial-gradient(circle at 50% 85%, var(--color-hero-indigo-bright) 0%, transparent 55%),
-    var(--color-hero-indigo);
-  background-size: 180% 180%;
-  animation: heroMeshShift 18s ease-in-out infinite alternate;
+  background-color: var(--color-hero-indigo-deep);
 }
 
-@keyframes heroMeshShift {
-  0% {
-    background-position: 0% 0%, 100% 0%, 50% 100%, 0 0;
-  }
-  100% {
-    background-position: 20% 30%, 70% 40%, 30% 70%, 0 0;
-  }
+.blobField {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.blobCircle {
+  position: absolute;
+  top: 58%;
+  left: 38%;
+  width: 46vmax;
+  height: 46vmax;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background-image: linear-gradient(
+    100deg,
+    var(--color-hero-indigo-bright) 0%,
+    var(--color-hero-indigo) 25%,
+    var(--color-hero-indigo-deep) 50%,
+    var(--color-hero-indigo-bright) 75%,
+    var(--color-hero-indigo) 100%
+  );
+  background-size: 1600% 100%;
+  background-repeat: no-repeat;
+  background-position: 0% 50%;
+  filter: blur(50px);
+  opacity: 0.65;
+  animation: heroBlobMorph 12s ease-in-out infinite, heroBlobGradientShift 18s ease-in-out infinite;
+}
+
+.blobSvg {
+  position: absolute;
+  top: 48%;
+  left: 56%;
+  width: clamp(420px, 58vw, 900px);
+  aspect-ratio: 456.693 / 403.543;
+  height: auto;
+  transform: translate(-50%, -50%);
+  transform-origin: center center;
+  animation: heroLiquidRotate 26s linear infinite;
+}
+
+.content {
+  position: relative;
+  z-index: 1;
 }
 
 .out {
@@ -65,4 +101,52 @@
 .cta.in {
   opacity: 1;
   transition: opacity 0.6s ease 0.3s, transform 0.6s ease 0.3s;
+}
+
+@keyframes heroLiquidRotate {
+  0% {
+    transform: translate(-50%, -50%) scale(1) rotate(0deg);
+  }
+  20% {
+    transform: translate(-50%, -50%) scale(0.92, 1) rotate(72deg);
+  }
+  40% {
+    transform: translate(-50%, -50%) scale(0.96, 1) rotate(144deg);
+  }
+  60% {
+    transform: translate(-50%, -50%) scale(1, 0.92) rotate(216deg);
+  }
+  80% {
+    transform: translate(-50%, -50%) scale(1, 0.88) rotate(288deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1) rotate(360deg);
+  }
+}
+
+@keyframes heroBlobMorph {
+  0%, 100% {
+    border-radius: 43% 77% 80% 40% / 40% 40% 80% 80%;
+  }
+  20% {
+    border-radius: 47% 73% 61% 59% / 47% 75% 45% 73%;
+  }
+  40% {
+    border-radius: 46% 74% 74% 46% / 74% 58% 62% 46%;
+  }
+  60% {
+    border-radius: 47% 73% 61% 59% / 40% 40% 80% 80%;
+  }
+  80% {
+    border-radius: 50% 70% 52% 68% / 51% 61% 59% 69%;
+  }
+}
+
+@keyframes heroBlobGradientShift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
 }
