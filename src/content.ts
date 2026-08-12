@@ -35,10 +35,10 @@ export const content: SiteContent = {
   name: 'Vit Benton',
   tagline: 'Full-stack web developer specializing in React & TypeScript — 14+ years building for the web.',
   bio: [
-    "I'm a full-stack web developer based in South Florida who loves building robust, user-centered web applications. Over 14+ years, I've shipped everything from sleek marketing sites and e-commerce platforms to complex, data-driven SaaS and GovTech applications used by local governments across the U.S.",
-    'My core is front-end engineering with React and TypeScript. Most recently I owned the front end for heavy, multi-step submission forms — dynamic per-jurisdiction validation, file uploads, and dashboards on both the user and processor sides — built with React Hook Form, Zod, Ant Design, and GraphQL. I also bring a solid backend foundation in Node.js, PHP, MySQL, and MongoDB, plus deep CMS experience with WordPress, Drupal, and Magento, and cloud deployment on AWS.',
-    "Whether I'm leading front-end architecture, hardening UI flows with integration and unit tests, or driving accessibility (WCAG) refactors, I bring a product-focused mindset, a love for clean code, and a real commitment to cross-functional collaboration. I'm also leaning into AI-assisted development to prototype and move faster without cutting corners.",
-    "I'm currently open to new front-end or full-stack roles (React/TypeScript), remote-friendly — if you're working on something ambitious and want a reliable, quality-minded engineer, let's connect.",
+    "I'm a full-stack web developer based in South Florida. Over 14+ years I've shipped marketing sites and e-commerce platforms, plus data-heavy SaaS and GovTech applications used by local governments across the U.S.",
+    'My core is front-end engineering with React and TypeScript. Most recently I owned the front end for heavy, multi-step submission forms (dynamic per-jurisdiction validation, file uploads, and dashboards on both the user and processor sides) built with React Hook Form, Zod, Ant Design, and GraphQL. I also bring a solid backend foundation in Node.js, PHP, MySQL, and MongoDB, plus deep CMS experience with WordPress, Drupal, and Magento, and cloud deployment on AWS.',
+    "I've led front-end architecture, hardened UI flows with integration and unit tests, and driven accessibility (WCAG) refactors. I care about clean code and work well across design, product, and engineering, and I'm leaning into AI-assisted development to prototype and move faster without cutting corners.",
+    "I'm currently open to new front-end or full-stack roles (React/TypeScript), remote-friendly. If you're working on something ambitious and need a reliable engineer, reach out.",
   ],
   photo: {
     src: `${BASE}headshot-1x.jpg`,
@@ -131,7 +131,7 @@ export const content: SiteContent = {
       startDate: 'Feb 2021',
       endDate: 'Feb 2022',
       bullets: [
-        'Led remote front-end development with UI/UX designers under Scrum, delivering responsive, user-centric web applications for startups and enterprise clients.',
+        'Led remote front-end development with UI/UX designers under Scrum, delivering responsive web applications for startups and enterprise clients.',
         'Built and maintained custom WordPress themes and implemented PHP back-end functionality with WordPress API integrations.',
         'Maintained an internal time-keeping tool in React and TypeScript; mentored junior developers through code reviews.',
       ],
