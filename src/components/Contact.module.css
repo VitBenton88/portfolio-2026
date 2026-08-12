@@ -1,12 +1,114 @@
 .section {
+  position: relative;
+  overflow: hidden;
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
   padding: 6rem 1.5rem 8rem;
+  background-color: var(--color-contact-magenta-deep);
+}
+
+.blobField {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.blobCircle {
+  position: absolute;
+  top: 58%;
+  left: 38%;
+  width: 32vmax;
+  height: 32vmax;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background-image: linear-gradient(
+    100deg,
+    var(--color-contact-magenta-bright) 0%,
+    var(--color-contact-magenta) 25%,
+    var(--color-contact-magenta-deep) 50%,
+    var(--color-contact-magenta-bright) 75%,
+    var(--color-contact-magenta) 100%
+  );
+  background-size: 1600% 100%;
+  background-repeat: no-repeat;
+  background-position: 0% 50%;
+  filter: blur(50px);
+  opacity: 0.65;
+  animation: contactBlobMorph 14s ease-in-out infinite, contactBlobGradientShift 21s ease-in-out infinite;
+}
+
+.blobSvg {
+  position: absolute;
+  top: 48%;
+  left: 56%;
+  width: clamp(300px, 42vw, 650px);
+  aspect-ratio: 456.693 / 403.543;
+  height: auto;
+  transform: translate(-50%, -50%);
+  transform-origin: center center;
+  animation: contactLiquidRotate 30s linear infinite;
+}
+
+.content {
+  position: relative;
+  z-index: 1;
 }
 
 .heading {
-  /* Darkened variant of --color-contact-magenta (#F0529C) for WCAG AA contrast
-   * against the paper background as heading text; the base magenta token is
-   * unchanged and still used everywhere else (ChapterRail, badges, etc.). */
-  color: #b8226e;
+  color: var(--color-paper);
   margin-bottom: 2rem;
   font-size: 2rem;
+}
+
+@keyframes contactLiquidRotate {
+  0% {
+    transform: translate(-50%, -50%) scale(1) rotate(0deg);
+  }
+  20% {
+    transform: translate(-50%, -50%) scale(0.92, 1) rotate(72deg);
+  }
+  40% {
+    transform: translate(-50%, -50%) scale(0.96, 1) rotate(144deg);
+  }
+  60% {
+    transform: translate(-50%, -50%) scale(1, 0.92) rotate(216deg);
+  }
+  80% {
+    transform: translate(-50%, -50%) scale(1, 0.88) rotate(288deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1) rotate(360deg);
+  }
+}
+
+@keyframes contactBlobMorph {
+  0%, 100% {
+    border-radius: 43% 77% 80% 40% / 40% 40% 80% 80%;
+  }
+  20% {
+    border-radius: 47% 73% 61% 59% / 47% 75% 45% 73%;
+  }
+  40% {
+    border-radius: 46% 74% 74% 46% / 74% 58% 62% 46%;
+  }
+  60% {
+    border-radius: 47% 73% 61% 59% / 40% 40% 80% 80%;
+  }
+  80% {
+    border-radius: 50% 70% 52% 68% / 51% 61% 59% 69%;
+  }
+}
+
+@keyframes contactBlobGradientShift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
 }
