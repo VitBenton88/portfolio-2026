@@ -9,7 +9,7 @@ export interface ExperienceEntry {
 }
 
 export interface SocialLink {
-  label: 'LinkedIn' | 'GitHub';
+  label: 'LinkedIn' | 'GitHub' | 'npm';
   url: string;
 }
 
@@ -161,6 +161,7 @@ export const content: SiteContent = {
   socialLinks: [
     { label: 'LinkedIn', url: 'https://www.linkedin.com/in/vit-benton/' },
     { label: 'GitHub', url: 'https://github.com/VitBenton88' },
+    { label: 'npm', url: 'https://www.npmjs.com/~vbenton' },
   ],
   resumeUrl: `${BASE}resume.pdf`,
 };

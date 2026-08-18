@@ -1,11 +1,12 @@
 import { Button, Container, Group, Title } from '@mantine/core';
-import { IconBrandGithub, IconBrandLinkedin } from '@tabler/icons-react';
+import { IconBrandGithub, IconBrandLinkedin, IconBrandNpm } from '@tabler/icons-react';
 import { content } from '../content';
 import classes from './Contact.module.css';
 
 const ICONS = {
   LinkedIn: IconBrandLinkedin,
   GitHub: IconBrandGithub,
+  npm: IconBrandNpm,
 } as const;
 
 export function Contact() {
