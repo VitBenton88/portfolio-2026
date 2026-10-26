@@ -18,20 +18,21 @@ export function Footer() {
         <Text size="sm">
           © {YEAR} {content.name}
         </Text>
-        <Group gap="sm">
+        <Group component="ul" gap={0} className="list-reset">
           {content.socialLinks.map((link) => {
             const Icon = ICONS[link.label];
             return (
-              <a
-                key={link.label}
-                href={link.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={link.label}
-                className={classes.iconLink}
-              >
-                <Icon size={20} />
-              </a>
+              <li key={link.label}>
+                <a
+                  href={link.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`${link.label} (opens in new tab)`}
+                  className={classes.iconLink}
+                >
+                  <Icon size={20} aria-hidden="true" />
+                </a>
+              </li>
             );
           })}
         </Group>

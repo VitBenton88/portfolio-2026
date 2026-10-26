@@ -1,19 +1,11 @@
-import { useEffect, useState } from 'react';
 import { Stack, Title, Text } from '@mantine/core';
 import { content } from '../content';
 import { ResumeDownloadButton } from './ResumeDownloadButton';
 import classes from './Hero.module.css';
 
 export function Hero() {
-  const [loaded, setLoaded] = useState(false);
-
-  useEffect(() => {
-    const timeout = setTimeout(() => setLoaded(true), 50);
-    return () => clearTimeout(timeout);
-  }, []);
-
   return (
-    <section id="hero" className={classes.hero}>
+    <section id="hero" className={classes.hero} aria-labelledby="hero-title">
       <div className={classes.blobField} aria-hidden="true">
         <div className={classes.blobCircle} />
         <svg
@@ -43,15 +35,15 @@ export function Hero() {
         </svg>
       </div>
       <Stack gap="lg" align="center" className={classes.content}>
-        <Title order={1} className={`${classes.name} ${loaded ? classes.in : classes.out}`}>
+        <Title order={1} id="hero-title" className={classes.name}>
           {content.name}
         </Title>
-        <Text size="xl" className={`${classes.tagline} ${loaded ? classes.in : classes.out}`}>
+        <Text size="xl" className={classes.tagline}>
           {content.tagline}
         </Text>
         <ResumeDownloadButton
           variant="white"
-          className={`${classes.cta} ${loaded ? classes.in : classes.out}`}
+          className={classes.cta}
         />
       </Stack>
     </section>

@@ -11,7 +11,7 @@ export function ResumeDownloadButton({ variant, color, className, mt }: ResumeDo
       component="a"
       href={content.resumeUrl}
       download="Vit-Benton-Resume.pdf"
-      leftSection={<IconDownload size={18} />}
+      leftSection={<IconDownload size={18} aria-hidden="true" />}
       variant={variant}
       color={color}
       mt={mt}

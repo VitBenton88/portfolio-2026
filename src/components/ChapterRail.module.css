@@ -3,24 +3,39 @@
   left: 0;
   top: 64px;
   bottom: 0;
-  width: 6px;
+  /* The visible bar is 6px; the extra width is hit area so each segment
+   * meets the 24px minimum target size (WCAG 2.5.8). */
+  width: 24px;
   display: flex;
   flex-direction: column;
   z-index: 90;
 }
 
 .segment {
+  position: relative;
   flex: 1;
-  width: 100%;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-  transition: background-color 0.3s ease, opacity 0.3s ease;
+}
+
+/* The bar is painted on a pseudo-element so the link itself (and its focus
+ * ring) is never faded along with an inactive segment. */
+.segment::before {
+  content: '';
+  position: absolute;
+  inset-block: 0;
+  inset-inline-start: 0;
+  width: 6px;
+  background-color: var(--segment-color);
+  transition: background-color 0.3s ease;
 }
 
 .segment:focus-visible {
-  outline: 2px solid var(--color-hero-indigo);
-  outline-offset: -2px;
+  outline: none;
+}
+
+.segment:focus-visible::before {
+  outline: 2px solid var(--color-ink);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 2px var(--color-paper);
 }
 
 @media (max-width: 48em) {

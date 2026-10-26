@@ -1,5 +1,4 @@
-import { useActiveSection } from '../hooks/useActiveSection';
-import { usePrefersReducedMotion } from '../hooks/usePrefersReducedMotion';
+import type { CSSProperties } from 'react';
 import type { SectionId } from '../types';
 import classes from './ChapterRail.module.css';
 
@@ -10,31 +9,28 @@ const CHAPTERS: { id: SectionId; color: string; label: string }[] = [
   { id: 'contact', color: 'var(--color-contact-magenta)', label: 'Contact' },
 ];
 
-const CHAPTER_IDS: SectionId[] = CHAPTERS.map((chapter) => chapter.id);
+interface ChapterRailProps {
+  active: SectionId;
+}
 
-export function ChapterRail() {
-  const active = useActiveSection(CHAPTER_IDS);
-  const prefersReducedMotion = usePrefersReducedMotion();
+export function ChapterRail({ active }: ChapterRailProps) {
   const activeIndex = CHAPTERS.findIndex((chapter) => chapter.id === active);
-
-  const scrollTo = (id: SectionId) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: prefersReducedMotion ? 'auto' : 'smooth' });
-  };
 
   return (
     <nav className={classes.rail} aria-label="Section progress">
       {CHAPTERS.map((chapter, index) => (
-        <button
+        <a
           key={chapter.id}
-          type="button"
+          href={`#${chapter.id}`}
           className={classes.segment}
           style={{
-            backgroundColor: index <= activeIndex ? chapter.color : 'var(--color-ink)',
-            opacity: index <= activeIndex ? 1 : 0.2,
-          }}
-          onClick={() => scrollTo(chapter.id)}
+            '--segment-color':
+              index <= activeIndex
+                ? chapter.color
+                : 'color-mix(in srgb, var(--color-ink) 20%, transparent)',
+          } as CSSProperties}
           aria-label={`Jump to ${chapter.label}`}
-          aria-current={chapter.id === active ? 'step' : undefined}
+          aria-current={chapter.id === active ? 'location' : undefined}
         />
       ))}
     </nav>

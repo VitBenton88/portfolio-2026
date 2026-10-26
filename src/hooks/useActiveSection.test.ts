@@ -3,7 +3,7 @@ import { afterEach, describe, expect, it } from 'vitest';
 import { useActiveSection } from './useActiveSection';
 import type { SectionId } from '../types';
 
-const SECTION_IDS: SectionId[] = ['about', 'resume', 'contact'];
+const SECTION_IDS = ['about', 'resume', 'contact'] as const satisfies readonly SectionId[];
 
 /** Appends a div#id to the document and stubs its getBoundingClientRect. */
 function mountSection(id: SectionId, top: number, height: number) {
@@ -25,9 +25,11 @@ function mountSection(id: SectionId, top: number, height: number) {
   return el;
 }
 
-function fireScroll() {
-  act(() => {
+/** Fires a scroll event and waits for the hook's rAF-throttled update. */
+async function fireScroll() {
+  await act(async () => {
     window.dispatchEvent(new Event('scroll'));
+    await new Promise((resolve) => requestAnimationFrame(resolve));
   });
 }
 
@@ -36,7 +38,7 @@ describe('useActiveSection', () => {
     document.body.innerHTML = '';
   });
 
-  it('activates a section much taller than the viewport once its top has scrolled past the activation line', () => {
+  it('activates a section much taller than the viewport once its top has scrolled past the activation line', async () => {
     // 'about' has scrolled well past the top of the viewport; 'resume' has
     // just crossed the activation line but is far taller than the viewport
     // (its bottom is nowhere near visible yet); 'contact' hasn't appeared.
@@ -53,14 +55,14 @@ describe('useActiveSection', () => {
 
     const { result, unmount } = renderHook(() => useActiveSection(SECTION_IDS));
 
-    fireScroll();
+    await fireScroll();
 
     expect(result.current).toBe('resume');
 
     unmount();
   });
 
-  it('forces the last section active once the page is scrolled to the bottom', () => {
+  it('forces the last section active once the page is scrolled to the bottom', async () => {
     // A short trailing section whose top may never reach the activation
     // line simply because there's no more page left to scroll.
     mountSection('about', -2000, 700);
@@ -76,7 +78,7 @@ describe('useActiveSection', () => {
 
     const { result, unmount } = renderHook(() => useActiveSection(SECTION_IDS));
 
-    fireScroll();
+    await fireScroll();
 
     expect(result.current).toBe('contact');
 

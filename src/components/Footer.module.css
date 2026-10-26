@@ -5,9 +5,15 @@
   border-top: 1px solid rgba(26, 27, 35, 0.08);
 }
 
+/* 32px box around a 20px icon: meets the 24px target minimum (WCAG 2.5.8)
+ * while keeping the same icon spacing the old 12px gap gave. */
 .iconLink {
   color: var(--color-ink);
   display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  inline-size: 32px;
+  block-size: 32px;
   transition: color 0.2s ease;
 }
 

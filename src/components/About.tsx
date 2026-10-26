@@ -1,22 +1,27 @@
 import { Container, Grid, Stack, Text, Title } from '@mantine/core';
 import { content } from '../content';
 import { Picture } from './Picture';
+import type { PictureSource } from '../types';
 import classes from './About.module.css';
 
 const BASE = import.meta.env.BASE_URL;
 
-const photoSources = [
-  {
-    media: '(max-width: 47.9375em)' as const,
-    srcset: `${BASE}headshot-mobile-1x.jpg 1x, ${BASE}headshot-mobile-2x.jpg 2x, ${BASE}headshot-mobile-3x.jpg 3x, ${BASE}headshot-mobile-4x.jpg 4x`,
-  },
+const PHOTO_WIDTHS = [350, 700, 1050, 1400];
+
+const photoSrcset = (ext: string) =>
+  PHOTO_WIDTHS.map((width) => `${BASE}headshot-${width}.${ext} ${width}w`).join(', ');
+
+// Modern formats first; the <img> keeps the JPEG srcset as the fallback.
+const photoSources: PictureSource[] = [
+  { type: 'image/avif', srcset: photoSrcset('avif'), sizes: content.photo.sizes },
+  { type: 'image/webp', srcset: photoSrcset('webp'), sizes: content.photo.sizes },
 ];
 
 export function About() {
   return (
-    <section id="about" className={classes.section}>
+    <section id="about" className={classes.section} aria-labelledby="about-title">
       <Container size="md">
-        <Title order={2} className={classes.heading}>
+        <Title order={2} id="about-title" className={classes.heading}>
           About
         </Title>
         <Grid gap="xl" align="start">
