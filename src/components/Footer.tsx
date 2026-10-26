@@ -9,12 +9,14 @@ const ICONS = {
   npm: IconBrandNpm,
 } as const;
 
+const YEAR = new Date().getFullYear();
+
 export function Footer() {
   return (
     <footer className={classes.footer}>
       <Group justify="space-between" px="md">
         <Text size="sm">
-          © {new Date().getFullYear()} {content.name}
+          © {YEAR} {content.name}
         </Text>
         <Group gap="sm">
           {content.socialLinks.map((link) => {
