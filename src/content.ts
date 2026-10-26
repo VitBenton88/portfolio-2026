@@ -41,12 +41,14 @@ export const content: SiteContent = {
     "I'm currently open to new front-end or full-stack roles (React/TypeScript), remote-friendly. If you're working on something ambitious and need a reliable engineer, reach out.",
   ],
   photo: {
-    src: `${BASE}headshot-1x.jpg`,
-    srcset: `${BASE}headshot-1x.jpg 1x, ${BASE}headshot-2x.jpg 2x, ${BASE}headshot-3x.jpg 3x, ${BASE}headshot-4x.jpg 4x`,
+    src: `${BASE}headshot-350.jpg`,
+    srcset: `${BASE}headshot-350.jpg 350w, ${BASE}headshot-700.jpg 700w, ${BASE}headshot-1050.jpg 1050w, ${BASE}headshot-1400.jpg 1400w`,
     width: '350',
     height: '341',
     loadingStrategy: 'lazy',
-    sizes: '(max-width: 47.9375em) 100vw, 350px',
+    // Rendered width of the photo column: full width minus gutters on
+    // mobile, a third of the container on tablet, capped at 282px.
+    sizes: '(max-width: 47.9375em) calc(100vw - 6.25rem), (max-width: 63.9375em) calc((100vw - 11rem) / 3), 282px',
   },
   skills: [
     {

@@ -7,7 +7,6 @@ const ACTIVATION_LINE = 96;
 
 export function useActiveSection(sectionIds: readonly SectionId[]): SectionId {
   const [active, setActive] = useState<SectionId>(sectionIds[0]);
-  const key = sectionIds.join(',');
 
   useEffect(() => {
     const lastId = sectionIds[sectionIds.length - 1];
@@ -33,7 +32,15 @@ export function useActiveSection(sectionIds: readonly SectionId[]): SectionId {
       return current;
     };
 
-    const handleScroll = () => setActive(computeActive());
+    // Scroll fires many times per frame; measure at most once per frame.
+    let frame = 0;
+    const handleScroll = () => {
+      if (frame) return;
+      frame = requestAnimationFrame(() => {
+        frame = 0;
+        setActive(computeActive());
+      });
+    };
 
     // Run once on mount in case the page loads already scrolled (e.g. a
     // hash-link reload landing mid-page or at the bottom).
@@ -42,14 +49,12 @@ export function useActiveSection(sectionIds: readonly SectionId[]): SectionId {
     window.addEventListener('scroll', handleScroll, { passive: true });
     window.addEventListener('resize', handleScroll);
     return () => {
+      cancelAnimationFrame(frame);
       window.removeEventListener('scroll', handleScroll);
       window.removeEventListener('resize', handleScroll);
     };
-    // sectionIds is intentionally excluded: `key` is its stable string
-    // representation, used so the effect doesn't re-run on every render
-    // when callers pass a new array reference (e.g. an inline `.map()`).
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [key]);
+    // Callers pass a module-level constant, so this runs once.
+  }, [sectionIds]);
 
   return active;
 }

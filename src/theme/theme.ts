@@ -2,8 +2,8 @@ import { createTheme } from '@mantine/core';
 import type { CSSVariablesResolver } from '@mantine/core';
 
 export const theme = createTheme({
-  fontFamily: 'IBM Plex Sans, sans-serif',
-  headings: { fontFamily: 'Bricolage Grotesque, sans-serif' },
+  fontFamily: "'IBM Plex Sans', sans-serif",
+  headings: { fontFamily: "'Bricolage Grotesque Variable', sans-serif" },
   primaryColor: 'indigo',
 });
 

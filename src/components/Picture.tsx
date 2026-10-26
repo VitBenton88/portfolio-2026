@@ -6,8 +6,8 @@ interface PictureProps {
   className?: string;
 }
 
-function mapSources({ media, srcset, type }: PictureSource, index: number) {
-  return <source key={index} media={media} srcSet={srcset} type={type} />;
+function mapSources({ media, srcset, sizes, type }: PictureSource) {
+  return <source key={`${type}-${media}`} media={media} srcSet={srcset} sizes={sizes} type={type} />;
 }
 
 export function Picture({ img, sources, className }: PictureProps) {

@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { Anchor, Burger, Drawer, Group, Stack } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
-import { useActiveSection } from '../hooks/useActiveSection';
 import { content } from '../content';
 import type { SectionId } from '../types';
 import classes from './NavBar.module.css';
@@ -12,15 +11,16 @@ const LINKS: { id: SectionId; label: string }[] = [
   { id: 'contact', label: 'Contact' },
 ];
 
-const ALL_SECTION_IDS: SectionId[] = ['hero', 'about', 'resume', 'contact'];
+interface NavBarProps {
+  active: SectionId;
+}
 
-export function NavBar() {
+export function NavBar({ active }: NavBarProps) {
   const [opened, { toggle, close }] = useDisclosure(false);
   // Set when the drawer closes because a link was picked: the browser has
   // already moved to that section, so focus should stay there rather than
   // jump back to the burger (Escape and the close button still return it).
   const [jumpedToSection, setJumpedToSection] = useState(false);
-  const active = useActiveSection(ALL_SECTION_IDS);
 
   return (
     <header className={classes.header}>

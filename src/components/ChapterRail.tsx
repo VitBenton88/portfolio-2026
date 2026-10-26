@@ -1,5 +1,4 @@
 import type { CSSProperties } from 'react';
-import { useActiveSection } from '../hooks/useActiveSection';
 import type { SectionId } from '../types';
 import classes from './ChapterRail.module.css';
 
@@ -10,10 +9,11 @@ const CHAPTERS: { id: SectionId; color: string; label: string }[] = [
   { id: 'contact', color: 'var(--color-contact-magenta)', label: 'Contact' },
 ];
 
-const CHAPTER_IDS: SectionId[] = CHAPTERS.map((chapter) => chapter.id);
+interface ChapterRailProps {
+  active: SectionId;
+}
 
-export function ChapterRail() {
-  const active = useActiveSection(CHAPTER_IDS);
+export function ChapterRail({ active }: ChapterRailProps) {
   const activeIndex = CHAPTERS.findIndex((chapter) => chapter.id === active);
 
   return (

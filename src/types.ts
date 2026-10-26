@@ -1,4 +1,7 @@
-export type SectionId = 'hero' | 'about' | 'resume' | 'contact';
+/** Page sections in DOM order; the source of truth for SectionId. */
+export const SECTION_IDS = ['hero', 'about', 'resume', 'contact'] as const;
+
+export type SectionId = (typeof SECTION_IDS)[number];
 
 type SrcsetStringType = string | `${string}, ${string}`;
 
@@ -27,6 +30,7 @@ type MediaQuery = MediaQueryTypes | `${MediaQueryTypes} and ${MediaQueryTypes}`;
 
 export interface PictureSource {
   srcset?: SrcsetStringType;
+  sizes?: string;
   media?: MediaQuery;
   type?: SourceType;
 }

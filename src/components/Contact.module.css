@@ -26,22 +26,21 @@
   left: 38%;
   width: 32vmax;
   height: 32vmax;
-  transform: translate(-50%, -50%);
-  border-radius: 50%;
+  translate: -50% -50%;
+  /* Irregular static shape; the motion comes from rotate/scale only, which
+   * the compositor animates without repainting or re-blurring the layer.
+   * Rotating the multi-stop gradient also gives the slow color shift. */
+  border-radius: 43% 77% 80% 40% / 40% 40% 80% 80%;
   background-image: linear-gradient(
     100deg,
     var(--color-contact-magenta-bright) 0%,
-    var(--color-contact-magenta) 25%,
-    var(--color-contact-magenta-deep) 50%,
-    var(--color-contact-magenta-bright) 75%,
-    var(--color-contact-magenta) 100%
+    var(--color-contact-magenta) 45%,
+    var(--color-contact-magenta-deep) 100%
   );
-  background-size: 1600% 100%;
-  background-repeat: no-repeat;
-  background-position: 0% 50%;
   filter: blur(50px);
   opacity: 0.65;
-  animation: contactBlobMorph 14s ease-in-out infinite, contactBlobGradientShift 21s ease-in-out infinite;
+  will-change: rotate, scale;
+  animation: contactBlobSpin 28s linear infinite, contactBlobBreathe 14s ease-in-out infinite;
 }
 
 .blobSvg {
@@ -54,6 +53,13 @@
   transform: translate(-50%, -50%);
   transform-origin: center center;
   animation: contactLiquidRotate 30s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .blobCircle,
+  .blobSvg {
+    animation: none;
+  }
 }
 
 .content {
@@ -88,29 +94,20 @@
   }
 }
 
-@keyframes contactBlobMorph {
-  0%, 100% {
-    border-radius: 43% 77% 80% 40% / 40% 40% 80% 80%;
-  }
-  20% {
-    border-radius: 47% 73% 61% 59% / 47% 75% 45% 73%;
-  }
-  40% {
-    border-radius: 46% 74% 74% 46% / 74% 58% 62% 46%;
-  }
-  60% {
-    border-radius: 47% 73% 61% 59% / 40% 40% 80% 80%;
-  }
-  80% {
-    border-radius: 50% 70% 52% 68% / 51% 61% 59% 69%;
+@keyframes contactBlobSpin {
+  to {
+    rotate: 360deg;
   }
 }
 
-@keyframes contactBlobGradientShift {
+@keyframes contactBlobBreathe {
   0%, 100% {
-    background-position: 0% 50%;
+    scale: 1 1;
   }
-  50% {
-    background-position: 100% 50%;
+  33% {
+    scale: 1.08 0.92;
+  }
+  66% {
+    scale: 0.94 1.06;
   }
 }
