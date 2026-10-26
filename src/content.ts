@@ -105,7 +105,7 @@ export const content: SiteContent = {
   experience: [
     {
       title: 'Software Engineer',
-      company: 'Just Appraised (GovTech)',
+      company: 'Alltus (Formerly Just Appraised Inc.)',
       startDate: 'Sep 2025',
       endDate: 'Jun 2026',
       bullets: [
