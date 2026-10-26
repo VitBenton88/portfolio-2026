@@ -64,6 +64,7 @@ export const content: SiteContent = {
         { name: 'React.js', color: '#61DAFB' },
         { name: 'React Native', color: '#61DAFB' },
         { name: 'Vue.js', color: '#4FC08D' },
+        { name: 'Next.js', color: '#000000' },
         { name: 'React Hook Form', color: '#EC5990' },
         { name: 'Zod', color: '#3068B7' },
         { name: 'Ant Design', color: '#0170FE' },
@@ -75,6 +76,7 @@ export const content: SiteContent = {
       items: [
         { name: 'Node.js', color: '#339933' },
         { name: 'PHP', color: '#777BB4' },
+        { name: 'Go', color: '#00ADD8' },
         { name: 'GraphQL', color: '#E10098' },
         { name: 'REST APIs', color: '#5B3DF5' },
         { name: 'MySQL', color: '#4479A1' },
@@ -98,7 +100,19 @@ export const content: SiteContent = {
         { name: 'Agile (Scrum/Kanban)', color: '#5B3DF5' },
         { name: 'Accessibility (WCAG)', color: '#5B3DF5' },
         { name: 'Web Performance', color: '#5B3DF5' },
-        { name: 'AI-Assisted Development', color: '#5B3DF5' },
+      ],
+    },
+    {
+      category: 'AI-Assisted Development',
+      items: [
+        { name: 'Claude Code', color: '#D97757' },
+        { name: 'MCP', color: '#5B3DF5' },
+        { name: 'Subagents', color: '#5B3DF5' },
+        { name: 'Custom Skills & Slash Commands', color: '#5B3DF5' },
+        { name: 'Context Engineering', color: '#5B3DF5' },
+        { name: 'Agentic Code Review', color: '#5B3DF5' },
+        { name: 'Playwright MCP', color: '#2EAD33' },
+        { name: 'LLM Feature Integration', color: '#5B3DF5' },
       ],
     },
   ],
@@ -110,6 +124,7 @@ export const content: SiteContent = {
       endDate: 'Jun 2026',
       bullets: [
         'Owned the front end for taxpayer- and processor-facing submission forms on a GovTech platform serving multiple U.S. county governments, using React, TypeScript, React Hook Form, Zod, and Ant Design over a GraphQL API.',
+        'Extended the Node.js backend, updating SQL queries to supply the data the forms needed, finishing features end-to-end instead of handing off backend gaps.',
         'Hired onto a stalled three-county project with both front ends incomplete; led a full UX redesign and front-end re-architecture, delivering all jurisdiction requirements within three months.',
         "Introduced the team's first integration tests and substantially raised unit-test coverage, eliminating recurring cross-jurisdiction regressions.",
       ],
@@ -121,6 +136,7 @@ export const content: SiteContent = {
       endDate: 'Feb 2025',
       bullets: [
         'Built and enhanced medium-to-large web applications in React.js and Vue.js, shipping new features and refactoring legacy code to modern TypeScript standards.',
+        'Led a Vue 2 to 3 migration: introduced TypeScript and Pinia, established typed contracts for micro-frontend compatibility, and reached ~90% test coverage across the migrated modules.',
         'Enhanced authentication flows with multi-factor (MFA) and passwordless login, and contributed to a micro-frontend architecture.',
         'Built reusable, accessible UI components meeting WCAG standards and translated Figma designs into pixel-perfect, responsive interfaces.',
       ],
@@ -143,13 +159,14 @@ export const content: SiteContent = {
       endDate: 'Feb 2021',
       bullets: [
         'Led web projects across web, video, and design teams, handling task delegation and direct client communication.',
-        'Developed full-stack web applications with React.js, Node.js, and MySQL, plus CMS builds on WordPress, Drupal, and Magento.',
+        'Introduced React and modern JavaScript practices to the interactive team, moving projects toward component-based frontends.',
+        'Developed full-stack web applications with PHP, Node.js, and MySQL, plus CMS builds on WordPress, Drupal, and Magento.',
         'Deployed and configured AWS EC2 servers and RDS databases for scalable client infrastructure.',
       ],
     },
     {
       title: 'Web Developer & Content Manager',
-      company: 'OutstandingEyewear.com',
+      company: 'OutstandingEyewear',
       startDate: 'Jun 2012',
       endDate: 'Dec 2017',
       bullets: [
