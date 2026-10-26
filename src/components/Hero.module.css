@@ -12,6 +12,15 @@
   --focus-ring-color: var(--color-paper);
 }
 
+/* On large desktop monitors a full-viewport hero leaves a sea of empty space.
+   Cap the minimum height rather than setting max-height, so content can still
+   grow the section if it ever needs more room. */
+@media (min-width: 75em) {
+  .hero {
+    min-height: min(100svh, 56rem);
+  }
+}
+
 .blobField {
   position: absolute;
   inset: 0;

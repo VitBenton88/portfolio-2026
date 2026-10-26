@@ -12,6 +12,14 @@
   --focus-ring-color: var(--color-paper);
 }
 
+/* Same large-desktop cap as the hero: stop 70vh from ballooning on tall
+   monitors while still letting content grow the section. */
+@media (min-width: 75em) {
+  .section {
+    min-height: min(70vh, 40rem);
+  }
+}
+
 .blobField {
   position: absolute;
   inset: 0;
