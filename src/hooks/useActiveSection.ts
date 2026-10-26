@@ -5,11 +5,11 @@ import type { SectionId } from '../types';
 // section. Roughly the sticky nav's height plus a little breathing room.
 const ACTIVATION_LINE = 96;
 
-export function useActiveSection(sectionIds: readonly SectionId[]): SectionId {
+export function useActiveSection(sectionIds: readonly [SectionId, ...SectionId[]]): SectionId {
   const [active, setActive] = useState<SectionId>(sectionIds[0]);
 
   useEffect(() => {
-    const lastId = sectionIds[sectionIds.length - 1];
+    const lastId = sectionIds[sectionIds.length - 1] ?? sectionIds[0];
 
     // Position-based scrollspy: the active section is the last one (in DOM
     // order) whose top has scrolled above the activation line. Unlike an
@@ -22,7 +22,7 @@ export function useActiveSection(sectionIds: readonly SectionId[]): SectionId {
         window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2;
       if (atBottom) return lastId;
 
-      let current = sectionIds[0];
+      let current: SectionId = sectionIds[0];
       for (const id of sectionIds) {
         const el = document.getElementById(id);
         if (el && el.getBoundingClientRect().top <= ACTIVATION_LINE) {

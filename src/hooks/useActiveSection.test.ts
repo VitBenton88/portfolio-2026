@@ -3,7 +3,7 @@ import { afterEach, describe, expect, it } from 'vitest';
 import { useActiveSection } from './useActiveSection';
 import type { SectionId } from '../types';
 
-const SECTION_IDS: SectionId[] = ['about', 'resume', 'contact'];
+const SECTION_IDS = ['about', 'resume', 'contact'] as const satisfies readonly SectionId[];
 
 /** Appends a div#id to the document and stubs its getBoundingClientRect. */
 function mountSection(id: SectionId, top: number, height: number) {
