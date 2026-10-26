@@ -8,6 +8,8 @@
   text-align: center;
   padding: 6rem 1.5rem 8rem;
   background-color: var(--color-contact-magenta-deep);
+  /* The default indigo ring vanishes against this background. */
+  --focus-ring-color: var(--color-paper);
 }
 
 .blobField {

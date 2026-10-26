@@ -9,10 +9,26 @@
   --color-contact-magenta: #F0529C;
   --color-contact-magenta-bright: #E8368C;
   --color-contact-magenta-deep: #B8226E;
+  /* Secondary text (Mantine's "dimmed"). Mantine's default gray-6 is only
+   * ~3.1:1 on paper; this is ~5.4:1 to meet WCAG AA for small text. */
+  --color-ink-muted: #5F6670;
+  --focus-ring-color: var(--color-hero-indigo);
 }
 
 section {
   scroll-margin-top: 64px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+.list-reset {
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 * {
@@ -30,8 +46,12 @@ h1, h2, h3 {
   font-family: 'Bricolage Grotesque', sans-serif;
 }
 
-:focus-visible {
-  outline: 3px solid var(--color-hero-indigo);
+/* Also overrides Mantine's own ring (primary color, 2px) so every focusable
+ * element shares one style. Sections on dark backgrounds reassign
+ * --focus-ring-color. */
+:focus-visible,
+.mantine-focus-auto:focus-visible {
+  outline: 3px solid var(--focus-ring-color);
   outline-offset: 2px;
 }
 

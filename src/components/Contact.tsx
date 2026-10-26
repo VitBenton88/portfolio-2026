@@ -1,4 +1,4 @@
-import { Button, Container, Group, Title } from '@mantine/core';
+import { Button, Container, Group, Title, VisuallyHidden } from '@mantine/core';
 import { IconBrandGithub, IconBrandLinkedin, IconBrandNpm } from '@tabler/icons-react';
 import { content } from '../content';
 import classes from './Contact.module.css';
@@ -11,7 +11,7 @@ const ICONS = {
 
 export function Contact() {
   return (
-    <section id="contact" className={classes.section}>
+    <section id="contact" className={classes.section} aria-labelledby="contact-title">
       <div className={classes.blobField} aria-hidden="true">
         <div className={classes.blobCircle} />
         <svg
@@ -41,26 +41,28 @@ export function Contact() {
         </svg>
       </div>
       <Container size="md" className={classes.content}>
-        <Title order={2} className={classes.heading}>
+        <Title order={2} id="contact-title" className={classes.heading}>
           Contact
         </Title>
-        <Group gap="md" justify="center">
+        <Group component="ul" gap="md" justify="center" className="list-reset">
           {content.socialLinks.map((link) => {
             const Icon = ICONS[link.label];
             return (
-              <Button
-                key={link.label}
-                component="a"
-                href={link.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                leftSection={<Icon size={18} />}
-                variant="white"
-                color="var(--color-contact-magenta-deep)"
-                size="lg"
-              >
-                {link.label}
-              </Button>
+              <li key={link.label}>
+                <Button
+                  component="a"
+                  href={link.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  leftSection={<Icon size={18} aria-hidden="true" />}
+                  variant="white"
+                  color="var(--color-contact-magenta-deep)"
+                  size="lg"
+                >
+                  {link.label}
+                  <VisuallyHidden> (opens in new tab)</VisuallyHidden>
+                </Button>
+              </li>
             );
           })}
         </Group>

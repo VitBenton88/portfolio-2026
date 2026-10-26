@@ -14,9 +14,9 @@ const photoSources = [
 
 export function About() {
   return (
-    <section id="about" className={classes.section}>
+    <section id="about" className={classes.section} aria-labelledby="about-title">
       <Container size="md">
-        <Title order={2} className={classes.heading}>
+        <Title order={2} id="about-title" className={classes.heading}>
           About
         </Title>
         <Grid gap="xl" align="start">
